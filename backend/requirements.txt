@@ -1,0 +1,15 @@
+Django==4.2.7
+djangorestframework==3.14.0
+django-cors-headers==4.3.1
+python-dotenv==1.0.0
+langchain
+langchain-core
+langchain-community
+langchain-chroma
+langchain-text-splitters
+langchain-classic
+chromadb==0.5.4
+pypdf==3.17.4
+google-generativeai
+langchain-google-genai
+psycopg2-binary==2.9.9
