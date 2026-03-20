@@ -132,66 +132,10 @@ RAG_RETRIEVAL_K=3
 RAG_CHAT_MAX_TOKENS=700
 ```
 
-Frontend env (optional):
-
-```env
-VITE_API_BASE=http://localhost:8000/api
-```
-
-If not provided, frontend falls back to `http://localhost:8000/api`.
-
-## Local Development Setup
-
-## 1) Backend
-
-```powershell
-cd backend
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
-.\.venv\Scripts\python.exe manage.py migrate
-.\.venv\Scripts\python.exe manage.py runserver 8000
-```
-
-## 2) Frontend
-
-```powershell
-cd frontend
-npm install
-npm run dev
-```
-
-Frontend default dev server runs on Vite.
-
-## Build for Production
-
-Frontend:
-
-```powershell
-cd frontend
-npm run build
-```
-
-Output: `frontend/dist/`
-
-Backend production baseline:
-- Set `DEBUG=False`
-- Configure `ALLOWED_HOSTS`
-- Use secure cookies and security middleware
-- Serve with a production WSGI server (for example Gunicorn/Waitress)
 
 ## Deployment Notes
 
 Current code runs locally but needs hardening before public hosting:
-
-- Add/enable Django security middleware:
-  - `django.middleware.security.SecurityMiddleware`
-  - `django.middleware.csrf.CsrfViewMiddleware`
-  - `django.middleware.clickjacking.XFrameOptionsMiddleware`
-- Set secure settings in production:
-  - `SESSION_COOKIE_SECURE=True`
-  - `CSRF_COOKIE_SECURE=True`
-  - `SECURE_SSL_REDIRECT=True` (behind HTTPS)
-- Replace in-process background thread ingestion with a worker queue (Celery/RQ) for reliability on hosted environments.
-- Fill `backend/.env.example` with required keys.
 
 ## Important Files
 
@@ -211,6 +155,3 @@ Current code runs locally but needs hardening before public hosting:
 - Gemini errors/rate limits:
   - Verify `GEMINI_API_KEY` and monitor quota via `/api/quota/`.
 
-## License
-
-Add your preferred license here.
